@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <button id="GetData">Verileri getir</button>
+    <table id="tbl-data">
+
+    </table>
+</body>
+</html>
+<script type="text/javascript">
+    $(function () {
+
+        $("#GetData").click(function () {
+
+            alert(localStorage.getItem('token'));
+            var token = ocalStorage.getItem('token');
+            
+
+            if (username != undefined && password != undefined) {
+
+                // ajax
+                $.ajax({
+                    url: 'https://localhost:44372/weatherforecast',
+                    type: 'GET',
+                   
+                    dataType: 'json',
+                    headers: {
+                        "Authorization": "Bearer " + token
+                    },
+                    success: function (gelenveri) {
+                        var display = gelenveri;
+                        alert(dipslay);
+                        $.each(display, function (i, member) {
+                            alert(display[i]);
+                        });
+                    },
+                    error: function (hata) {
+
+                    }
+                });
+            }
+
+        });
+
+    });
+</script>

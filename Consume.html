@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <a href="data.html">Veriler</a>
+    <br />
+   <label> Kullanıcı Adı</label>
+   <input type="text" id="username" name="username" />
+    <label> Şifre</label>
+    <input type="password" id="password" name="password" />
+    <button id="control-Button">Kontrol et</button>
+
+</body>
+</html>
+
+
+<script type="text/javascript">
+    $(function () {
+
+        $("#control-Button").click(function () {
+
+           
+            var userName = $("#username").val();
+            var pass = $("#password").val();
+
+            alert(username);
+            if (username != undefined && password != undefined) {
+
+                // ajax
+                $.ajax({
+                    url: 'https://localhost:44372/weatherforecast/Authenticate',
+                    type: 'POST',
+                    data: { username: userName, password: pass },
+                    success: function (gelenveri) {
+                        var token = gelenveri;
+                        localStorage.setItem('token', token);
+                    },
+                    error: function (hata) {
+
+                    }
+                });
+            }
+
+        });
+       
+    });
+</script>
