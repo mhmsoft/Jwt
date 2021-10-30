@@ -53,6 +53,10 @@ namespace Jwt
 
 
             services.AddSingleton<IJwtAuthenticateManager>(new AuthenticateManager(tokenKey));
+            
+            services.AddCors(options =>
+                options.AddDefaultPolicy(builder =>
+                                builder.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()));
 
             services.AddSwaggerGen(options => {
                 options.SwaggerDoc("v1", new OpenApiInfo { Version = "v1", Title = ".NET Core Swagger" });
@@ -70,6 +74,7 @@ namespace Jwt
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseCors();
             app.UseAuthentication();
             app.UseAuthorization();
 

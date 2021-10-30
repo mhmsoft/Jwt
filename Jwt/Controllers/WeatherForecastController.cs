@@ -47,9 +47,9 @@ namespace Jwt.Controllers
 
         [HttpPost("authenticate")]
         [AllowAnonymous]
-        public IActionResult Authenticate(string username,string password)
+        public IActionResult Authenticate(InputParam param)
         {
-           var token= _jwtAuthenticateManager.Authenticate(username, password);
+           var token= _jwtAuthenticateManager.Authenticate(param.uname, param.passw);
             if (token == null)
                 return Unauthorized();
             return Ok(token);

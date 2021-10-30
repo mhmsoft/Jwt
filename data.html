@@ -18,11 +18,10 @@
 
         $("#GetData").click(function () {
 
-            alert(localStorage.getItem('token'));
-            var token = ocalStorage.getItem('token');
+            //alert(localStorage.getItem('token'));
+            var token = localStorage.getItem('token');
             
 
-            if (username != undefined && password != undefined) {
 
                 // ajax
                 $.ajax({
@@ -35,16 +34,34 @@
                     },
                     success: function (gelenveri) {
                         var display = gelenveri;
-                        alert(dipslay);
+                        alert(JSON.stringify(display));
                         $.each(display, function (i, member) {
-                            alert(display[i]);
+                            $("#tbl-data").append("<tr>");
+                            $("#tbl-data").append("<td>" + member.date);
+                            
+                            $("#tbl-data").append("</td>");
+                            $("#tbl-data").append("<td>" + member.temperatureF);
+                            
+                            $("#tbl-data").append("</td>");
+                            $("#tbl-data").append("<td>" + member.temperatureC);
+
+                            $("#tbl-data").append("</td>");
+                            $("#tbl-data").append("<td>" + member.summary);
+
+                            $("#tbl-data").append("</td>");
+                            $("#tbl-data").append("</tr>");
+                          
                         });
                     },
                     error: function (hata) {
+                        $("#tbl-data").append("</tr>");
+                        $("#tbl-data").append("<td>" + hata);
 
+                        $("#tbl-data").append("</td>");
+                        $("#tbl-data").append("</tr>");
                     }
                 });
-            }
+            
 
         });
 

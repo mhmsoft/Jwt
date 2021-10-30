@@ -9,12 +9,13 @@
 <body>
     <a href="data.html">Veriler</a>
     <br />
-   <label> Kullanıcı Adı</label>
-   <input type="text" id="username" name="username" />
-    <label> Şifre</label>
-    <input type="password" id="password" name="password" />
-    <button id="control-Button">Kontrol et</button>
-
+   
+        <label> Kullanıcı Adı</label>
+        <input type="text" id="username" name="username" />
+        <label> Şifre</label>
+        <input type="password" id="password" name="password" />
+        <button id="control-Button">Kontrol et</button>
+  
 </body>
 </html>
 
@@ -28,14 +29,16 @@
             var userName = $("#username").val();
             var pass = $("#password").val();
 
-            alert(username);
-            if (username != undefined && password != undefined) {
+            alert(userName);
+            if (userName != undefined && pass != undefined) {
 
                 // ajax
                 $.ajax({
                     url: 'https://localhost:44372/weatherforecast/Authenticate',
                     type: 'POST',
-                    data: { username: userName, password: pass },
+                    contentType: "application/json; charset=utf-8",
+                    datatype: "json",
+                    data: JSON.stringify({ uname: userName, passw: pass }),
                     success: function (gelenveri) {
                         var token = gelenveri;
                         localStorage.setItem('token', token);
