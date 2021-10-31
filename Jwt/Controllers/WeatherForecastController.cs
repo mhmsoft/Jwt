@@ -42,7 +42,7 @@ namespace Jwt.Controllers
         [HttpGet("test")]
         public string test()
         {
-            return "naber ya";
+            return "naber dostum";
         }
 
         [HttpPost("authenticate")]
