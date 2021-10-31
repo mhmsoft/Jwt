@@ -8,7 +8,8 @@
 </head>
 <body>
     <button id="GetData">Verileri getir</button>
-    <table id="tbl-data">
+
+    <table id="tbl-data" border="1">
 
     </table>
 </body>
@@ -20,8 +21,6 @@
 
             //alert(localStorage.getItem('token'));
             var token = localStorage.getItem('token');
-            
-
 
                 // ajax
                 $.ajax({
@@ -35,15 +34,19 @@
                     success: function (gelenveri) {
                         var display = gelenveri;
                         alert(JSON.stringify(display));
+
+                        $("#tbl-data").append("<tr><th>Tarih</th><th>Celcius</th><th>Fahranayt</th><th>Özet bilgi</th></tr>");
+
                         $.each(display, function (i, member) {
+
                             $("#tbl-data").append("<tr>");
                             $("#tbl-data").append("<td>" + member.date);
                             
                             $("#tbl-data").append("</td>");
-                            $("#tbl-data").append("<td>" + member.temperatureF);
+                            $("#tbl-data").append("<td>" + member.temperatureC);
                             
                             $("#tbl-data").append("</td>");
-                            $("#tbl-data").append("<td>" + member.temperatureC);
+                            $("#tbl-data").append("<td>" + member.temperatureF);
 
                             $("#tbl-data").append("</td>");
                             $("#tbl-data").append("<td>" + member.summary);

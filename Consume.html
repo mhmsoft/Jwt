@@ -9,7 +9,6 @@
 <body>
     <a href="data.html">Veriler</a>
     <br />
-   
         <label> Kullanıcı Adı</label>
         <input type="text" id="username" name="username" />
         <label> Şifre</label>
@@ -24,12 +23,8 @@
     $(function () {
 
         $("#control-Button").click(function () {
-
-           
             var userName = $("#username").val();
             var pass = $("#password").val();
-
-            alert(userName);
             if (userName != undefined && pass != undefined) {
 
                 // ajax

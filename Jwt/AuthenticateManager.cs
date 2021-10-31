@@ -16,6 +16,7 @@ namespace Jwt
             ,{"test","123"}
             ,{"admin","admin"}
             };
+
         private string _key;
         public AuthenticateManager(string key)
         {

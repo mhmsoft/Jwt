@@ -51,7 +51,7 @@ namespace Jwt
                };
            });
 
-
+            // Depedecy InJection
             services.AddSingleton<IJwtAuthenticateManager>(new AuthenticateManager(tokenKey));
             
             services.AddCors(options =>
